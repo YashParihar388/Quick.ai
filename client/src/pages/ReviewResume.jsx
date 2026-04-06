@@ -25,7 +25,10 @@ const ReviewResume = () => {
         formData.append('resume',input)
         
         const {data} = await axios.post('/api/ai/resume-review',formData,{
-        headers:{Authorization:`Bearer ${await getToken()}`}
+        headers:{
+          Authorization:`Bearer ${await getToken()}`,
+          'Content-Type':'multipart/form-data'
+        }
         })
 
         if(data.success){
